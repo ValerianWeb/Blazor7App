@@ -9,6 +9,7 @@ namespace Blazor7App.Shared
     public enum ProductCategories
     {
         None,
+        Books, 
         Electronics,
         Groceries,
         Home,
