@@ -1,12 +1,53 @@
 ﻿@page "/"
+@using Radzen;
+@inject DialogService DialogService
 
 <PageTitle>Home</PageTitle>
 
 <h1>Blazor ASP.NET 7.0 Example</h1>
 
-Welcome to your new app.
+<p>
+    Welcome to your new app.
+</p>
 
-<RadzenButton Text="Radzen Button"></RadzenButton>
+<p>
+    <span class="rz-ripple">
+        <RadzenButton Text="Ordinary Radzen Button"
+            Click=@ShowMessage></RadzenButton>
+    </span>
+</p>
+<p>
+    @message
+</p>
 
+<div class="rz-p-12 rz-text-align-center">
+    <RadzenButton Text="Dialog with inline Blazor content" 
+        ButtonStyle="ButtonStyle.Secondary" Click=@ShowInlineDialog />
+</div>
 
+@code 
+{
+    private string message = "";
 
+    int orderID = 10248;
+
+    async Task ShowInlineDialog()
+    {
+        var result = await DialogService.OpenAsync("Simple Dialog", ds =>
+            @<RadzenStack Gap="1.5rem">
+                <p>Confirm Order ID <b>@orderID</b>?</p>
+                <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenStack Orientation="Orientation.Horizontal">
+                        <RadzenButton Text="Ok" Click="() => ds.Close(true)" Style="width: 80px;" />
+                        <RadzenButton Text="Cancel" Click="() => ds.Close(false)" ButtonStyle="ButtonStyle.Light" />
+                    </RadzenStack>
+                    <RadzenButton Text="Refresh" Click="(() => { orderID = 10249; ds.Refresh(); })" ButtonStyle="ButtonStyle.Light" />
+                </RadzenStack>
+            </RadzenStack>);
+    }
+
+    public void ShowMessage()
+    {
+        message = "Hello from Radzen!";
+    }
+}
