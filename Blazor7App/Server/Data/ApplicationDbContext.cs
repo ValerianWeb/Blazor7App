@@ -123,6 +123,5 @@ namespace Blazor7App.Server.Data
                 }
             );
         }
-
     }
 }
