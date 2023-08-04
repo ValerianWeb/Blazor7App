@@ -1,0 +1,35 @@
+﻿@page "/ProductList"
+@inject HttpClient http;
+@inject ProductService productService;
+@using Blazor7App.Shared
+<Authentication></Authentication>
+<h3>Product List</h3>
+
+<section>
+	@if(Products != null)
+    {
+        @foreach (var product in Products)
+        {
+            <div>
+                @product.ProductId<br>
+                @product.Name<br>
+                @product.Price<br>
+            </div>
+        }
+    }
+    else
+    {
+        <p><em>Loading...</em></p>
+    }
+</section>
+@code 
+{
+
+    private List<Product> Products = new List<Product>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await productService.GetProducts();
+        Products = productService.Products;
+    }
+}

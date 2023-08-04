@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Blazor7App.Server.Data;
 using Blazor7App.Shared;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Blazor7App.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +20,7 @@ namespace Blazor7App.Server.Controllers
 
         // GET: api/Products
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
           if (_context.Products == null)
