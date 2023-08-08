@@ -43,7 +43,7 @@ namespace Blazor7App.Server.Data
                         + " blackberry and fresh rhubarb supported with interludes of ripe pear"
                         + " and sweet peach.",
                     Image = "CandlePlumPudding.png",
-                    Category = ProductCategories.None, 
+                    Category = ProductCategories.Candles, 
                     Price = 48.95m 
                 },
                 new Product 
@@ -118,7 +118,7 @@ namespace Blazor7App.Server.Data
                     + "followed by orange and cinnamon with floral back notes of jasmine and lily on a base of sandal,"
                     + "cedar, musk and vanilla",
                     Image = "CandlePlumPudding.png",
-                    Category = ProductCategories.Books, 
+                    Category = ProductCategories.Soaps, 
                     Price = 1200 
                 }
             );

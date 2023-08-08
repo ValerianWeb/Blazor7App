@@ -8,7 +8,7 @@ namespace Blazor7App.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -27,7 +27,7 @@ namespace Blazor7App.Server.Controllers
           {
               return NotFound();
           }
-            return await _context.Products.ToListAsync();
+            return Ok(await _context.Products.ToListAsync());
         }
 
         // GET: api/Products/5

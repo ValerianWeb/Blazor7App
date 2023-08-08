@@ -5,6 +5,7 @@ using System.Net.Http.Json;
 
 namespace Blazor7App.Client.Services
 {
+    [AllowAnonymous]
     public class ProductService
     {
         // add methods to call all the web api methods in the

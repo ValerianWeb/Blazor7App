@@ -1,0 +1,31 @@
+﻿@using Blazor7App.Shared;
+
+	<div class="card m-2 text-center" style="width:18rem;">
+	
+		<a href="@($"ProductView/{product.ProductId}")">
+
+			<img class="card-img-top"
+				 src="/images/@product.Image"
+				 alt="@product.Name" />
+		</a>
+		<div class="card-body">
+
+			<a href="@($"ProductView/{product.ProductId}")">
+				<h6 class="p-2 bg-primary text-white card-title">
+					@product.Name
+				</h6>
+			</a>
+			<p class="card-text text-center">
+			@product.Category - <strong>£@product.Price</strong><br />
+				@product.Description
+			</p>
+		</div>
+
+	</div>
+
+
+@code 
+{
+	[Parameter]
+	public Product product { get; set; }
+}
