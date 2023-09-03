@@ -7,19 +7,29 @@ using Blazor7App.Shared;
 
 namespace Blazor7App.Server.Data
 {
+    /// <summary>
+    /// This class provides the database context for the application.
+    /// The database only contains one table, Products, which is seeded with data.
+    /// Derek Peacock.  2023-09-03
+    /// </summary>
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
         public ApplicationDbContext(
             DbContextOptions options,
-            IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
+            IOptions<OperationalStoreOptions> operationalStoreOptions) 
+            : base(options, operationalStoreOptions)
         {
         }
 
         // Add a DbSet for each entity type that you want to include in your model.
         public DbSet<Product> Products { get; set; } = null!;
 
-        // seed the database with products
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		/// <summary>
+		/// seed the database with sample products with at least
+        /// one product in each category.
+		/// </summary>
+		/// <param name="modelBuilder"></param>
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
