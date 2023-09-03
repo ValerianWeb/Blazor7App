@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Blazor7App.Server.Controllers
 {
+    /// <summary>
+    /// This class provides the web api for the Products table.
+    /// Derek Peacock.  2023-09-03
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
@@ -18,8 +22,13 @@ namespace Blazor7App.Server.Controllers
             _context = context;
         }
 
-        // GET: api/Products
-        [HttpGet]
+		/// <summary>
+		/// GET: api/Products
+		/// Returns all the products in the database.
+		/// as a list of Product objects.
+		/// </summary>
+		/// <returns></returns>
+		[HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
