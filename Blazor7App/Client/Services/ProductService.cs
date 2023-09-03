@@ -5,11 +5,15 @@ using System.Net.Http.Json;
 
 namespace Blazor7App.Client.Services
 {
+    /// <summary>
+    /// This class provides access to the database via the web api.
+    /// Derek Peacock.  2023-09-03
+    /// </summary>
     [AllowAnonymous]
     public class ProductService
     {
-        // add methods to call all the web api methods in the
-        // ProductsController in the server project
+        // add methods to call all the standard web api methods in the
+        // ProductsController in the Server Project
 
         private readonly HttpClient _httpClient;
 
