@@ -5,28 +5,35 @@
 @using Microsoft.AspNetCore.Authorization;
 @attribute [AllowAnonymous]
 
+<AuthorizeView>
+    <Authorized>
+        
+    </Authorized>
+    <NotAuthorized>
+        <section>
+            @if (Products != null)
+            {
+                <div class="row">
+                    @foreach (var product in Products)
+                    {
+                        <div class="col-lg-4 mx-auto">
+                            <ProductCard product="product"></ProductCard>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p><em>Loading...</em></p>
+            }
+        </section>
+    </NotAuthorized>
+</AuthorizeView>
 <h3>Product List</h3>
 
-<section>
-	@if(Products != null)
-    {
-        <div class="row">
-            @foreach (var product in Products)
-            {
-                <div class="col-lg-4 mx-auto">
-                    <ProductCard product="product"></ProductCard>
-                </div>  
-            }
-        </div>
-    }
-    else
-    {
-        <p><em>Loading...</em></p>
-    }
-</section>
+
 @code 
 {
-
     private List<Product> Products = new List<Product>();
 
     [AllowAnonymous]
