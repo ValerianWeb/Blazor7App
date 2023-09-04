@@ -12,6 +12,7 @@ namespace Blazor7App.Server.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
